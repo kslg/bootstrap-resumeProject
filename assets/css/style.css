@@ -74,3 +74,35 @@ header {
     padding: 0;
 }
 
+.menuitem {
+    height: 120px;
+    text-align: center;
+    padding: 0;
+}
+
+/* Set the text decoration to none. This will remove the underscore that we see under the text of our link. */
+.menuitem a {
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    height: 120px;
+}
+
+/* We're also going to use display block so that the icon appears on a line of its own. */
+.menuitem a i {
+    padding-top: 22px;
+    display: block;
+    color: #fafafa;
+    font-size: 26px;
+}
+
+.menuitem span {
+    display: block;
+    width: 100%;
+    padding-top: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
