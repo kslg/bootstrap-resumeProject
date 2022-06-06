@@ -11,17 +11,36 @@
 </head>
 <body>
     <header>
-        <div class="row">
+        <div class="row no-gutters">
+            <!-- Splitting the screen into Thirds (Rule of thirds) -->
             <a class="col-md-4 logo" href="index.html"></a>
             <div class="col-md-8">
-                <div class="row bg-color-name-title">
+                <div class="row no-gutters bg-color-name-title">
                     <div class="col heading">
                         <h1 class="name">Krishan Gharu</h1>
                         <h2 class="title">Full Stack Developer</h2>
-
                     </div>
                 </div>    
-
+                <div class="row no-gutters">
+                    <div class="col">
+                        <!-- class of list-inline, which is supplied by Bootstrap and stops a list from displaying vertically and displays it horizontally instead.-->
+                        <ul id="nav" class="list-inline menucontainer">
+                            <!-- Have to give the class of list-inline-item to all <li> elements when we're using the Bootstrap list-inline class.-->
+                            <li class="col-6 col-sm-3 ui-menu-color-home list-inline-item">
+                                <a href="#"><span>Home</span></a>
+                            </li>
+                            <li class="col-6 col-sm-3 ui-menu-color-resume list-inline-item">
+                                <a href="#"><span>Resume</span></a>
+                            </li>
+                            <li class="col-6 col-sm-3 ui-menu-color-contact list-inline-item">
+                                <a href="#"><span>Contact</span></a>
+                            </li>
+                            <li class="col-6 col-sm-3 ui-menu-color-download list-inline-item">
+                                <a href="#"><span>Download</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>    
     </header>
