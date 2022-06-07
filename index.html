@@ -48,7 +48,74 @@
     
     <section class="container-fluid">
         <!-- This will allow us to create a table structure so that our columns will remain the same height, regardless of content. -->
-        <div class="row row-table">
+        <div class="row">
+            <!-- Add a col-md-4 above our three reasons.
+            We're doing this because, by default, elements are rendered in the order that they appear
+            in HTML.
+            So they either appear above, or they'll appear to the left and try and push any block level
+            elements below that.
+            But we're using bootstrap to have our two columns side-by-side in the row.
+            And we do want our personal information to appear on the left, so that's why we're putting
+            our col-md-4 above the three reasons. 
+            -->
+            <div class="col-md-4 bg-color-personal-info section-column">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="section-heading uppercase">
+                            Personal Info
+                        </h3>
+                    </div>
+                </div>
+                <div class="personal-info-item">
+                    <div class="key">
+                        <p class="uppercase">
+                            Name:
+                        </p>
+                    </div>
+                    <div class="value">
+                        <p>
+                            Krishan Gharu
+                        </p>
+                    </div>
+                </div>
+                <div class="personal-info-item">
+                    <div class="key">
+                        <p class="uppercase">
+                            Address:
+                        </p>
+                    </div>
+                    <div class="value">
+                        <p>
+                            Buckingham Palace SW1A1AA
+                        </p>
+                    </div>
+                </div>
+                <div class="personal-info-item">
+                    <div class="key">
+                        <p class="uppercase">
+                            Phone:
+                        </p>
+                    </div>
+                    <div class="value">
+                        <p>
+                            0208 555 5555
+                        </p>
+                    </div>
+                </div>
+                <div class="personal-info-item">
+                    <div class="key">
+                        <p class="uppercase">
+                            Email:
+                        </p>
+                    </div>
+                    <div class="value">
+                        <p>
+                            krishan@mail.com
+                        </p>
+                    </div>
+                </div>
+
+            </div>
             <div class="col-md-8 bg-color-three-reasons section-column">
                 <div class="row">
                     <div class="col">
@@ -101,9 +168,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </section>
     
     <footer class="container-fluid">
