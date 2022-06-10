@@ -268,3 +268,30 @@ footer {
     position: relative;
     width: 60%;
 }
+
+/* ----------------------------- Skills */
+
+.progress {
+    position: relative;
+    height: 25px;
+    margin-bottom: 4px;
+}
+
+/* Remember that the progress type represents the text label.
+We want it to sit on top of the progress bar instead of over to the right.
+We also want it to be positioned to the far left.
+So to do this, we're going to set the position to absolute.
+This is the absolute child of a relative parent.
+So when we set the left position to 0px, it will move it to the far left of the progress bar. */
+.progress-type {
+    position: absolute;
+    left: 0px;
+    font-weight: 400;
+    padding: 3px 30px 2px 10px;
+    color: #fafafa;
+    background-color: rgba(25, 25, 25, 0.2);
+}
+
+.progress-section {
+    margin: 40px 20px;
+}
