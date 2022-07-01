@@ -43,6 +43,10 @@ function repoInformationHTML(repos) {
 // This is the same function that we're calling in the oninput event in our text field.
 // We're going to pass in the event argument into this function.
 function fetchGitHubInformation(event) {
+    // Setting their HTML content to an empty string has the effect of emptying these divs.
+    // When the text box is empty, no repos are displayed. This fixes the bug to displaying nothing when empty.
+    $("#gh-user-data").html("");
+    $("#gh-repo-data").html("");
 
     var username = $("#gh-username").val();
     // So if the username field is empty, there's no value, then we're going to return a little piece of HTML that says 
@@ -77,17 +81,25 @@ function fetchGitHubInformation(event) {
             $("#gh-user-data").html(userInformationHTML(userData));
             $("#gh-repo-data").html(repoInformationHTML(repoData));
         },
-        // Error function for when a github user is not found.
+        // Error functions for when a github user is not found OR too many API request to Github.
+        // If error is not 404 or 403, then we'll console.log out the Error, just the entire error response.
         function(errorResponse) {
             if (errorResponse.status === 404) {
                 $("#gh-user-data").html(
                     `<h2>No info found for user ${username}</h2>`);
+            } 
+            // 403 means forbidden. And this is the status code that GitHub returned when our access is denied.
+
+            else if (errorResponse.status === 403) {
+                // method getResponseHeader() returns the string containing the text of a particular header's value.
+                // And the particular header that we want to target is the X-RateLimit-Reset header.
+                // This is a header that's provided by GitHub to helpfully let us know when our quota will be reset and when we can start using the API again.
+                var resetTime = new Date(errorResponse.getResponseHeader('X-RateLimit-Reset') * 1000);
+                $("#gh-user-data").html(`<h4>Too many requests, please wait until ${resetTime.toLocaleTimeString()}</h4>`);                
             } else {
                 console.log(errorResponse);
                 $("#gh-user-data").html(
                     `<h2>Error: ${errorResponse.responseJSON.message}</h2>`);
             }
-            //error that comes back may not be a 404 error.
-            // So if that happens, then what we'll do we'll console.log out the Error, just the entire error response.
         });
 }
