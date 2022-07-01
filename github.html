@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
     <script type="text/javascript" src="assets/js/github-information.js"></script>
+
     <title>Rosie</title>
 </head>
 
@@ -63,6 +65,8 @@
                 <h5 class="uppercase text-center">You can also search on other user profiles</h5>
 
                 <div class="center-form">
+                    <!-- "fetchFitHubInformation" is a function that we call -->
+                    <!--  This "oninput" event will fetch the GitHub information. -->
                     <input type="text" id="gh-username" value="octocat" oninput="fetchGitHubInformation()" />
                     <div id="gh-user-data"></div>
                     <div id="gh-repo-data"></div>
