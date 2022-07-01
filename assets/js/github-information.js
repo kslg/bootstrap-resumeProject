@@ -18,6 +18,28 @@ function userInformationHTML(user) {
         </div>`;
 }
 
+// A function so that we can display repo data on screen.
+function repoInformationHTML(repos) {
+    if (repos.length == 0) {
+        return `<div class="clearfix repo-list">No repos!</div>`;
+    }
+
+    var listItemsHTML = repos.map(function(repo) {
+        return `<li>
+                    <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                </li>`;
+    });
+
+    return `<div class="clearfix repo-list">
+                <p>
+                    <strong>Repo List:</strong>
+                </p>
+                <ul>
+                    ${listItemsHTML.join("\n")}
+                </ul>
+            </div>`;
+}
+
 // This is the same function that we're calling in the oninput event in our text field.
 // We're going to pass in the event argument into this function.
 function fetchGitHubInformation(event) {
@@ -39,12 +61,21 @@ function fetchGitHubInformation(event) {
 
     $.when(
         // So what we're going to do here is pass in a function. And that function is going to be the getJSON() function.
-        $.getJSON(`https://api.github.com/users/${username}`)
+        $.getJSON(`https://api.github.com/users/${username}`),
+        // This will list the repositories for that individual user.
+        $.getJSON(`https://api.github.com/users/${username}/repos`)
     ).then(
-        // We have another function, response(), which the first argument is the response that came back from our getJSON() method.
-        function(response) {
-            var userData = response;
+        // We have another function, with two arguments. Responses that come back from our getJSON() method.
+        // Now that we're doing two getJSON calls, we actually need to have two responses come back in our first function.
+        // So we're going to call those firstResponse and secondResponse.
+        function(fristResponse, secondResponse) {
+            // when we do two calls like this, the when() method packs a response up into arrays.
+            // And each one is the first element of the array.
+            // So we just need to put the indexes in there for these responses.
+            var userData = fristResponse[0];
+            var repoData = secondResponse[0];
             $("#gh-user-data").html(userInformationHTML(userData));
+            $("#gh-repo-data").html(repoInformationHTML(repoData));
         },
         // Error function for when a github user is not found.
         function(errorResponse) {
