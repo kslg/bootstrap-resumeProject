@@ -1,3 +1,23 @@
+// "user" is the object that's been returned from the GitHub API.
+// This object has many methods, such as the user's name, login name, and links to their
+// profile. And we're going to return these in a formatted HTML string.
+function userInformationHTML(user) {
+    return `
+        <h2>${user.name}
+            <span class="small-name">
+                (@<a href="${user.html_url}" target="_blank">${user.login}</a>)
+            </span>
+        </h2>
+        <div class="gh-content">
+            <div class="gh-avatar">
+                <a href="${user.html_url}" target="_blank">
+                    <img src="${user.avatar_url}" width="80" height="80" alt="${user.login}" />
+                </a>
+            </div>
+            <p>Followers: ${user.followers} - Following ${user.following} <br> Repos: ${user.public_repos}</p>
+        </div>`;
+}
+
 // This is the same function that we're calling in the oninput event in our text field.
 // We're going to pass in the event argument into this function.
 function fetchGitHubInformation(event) {
