@@ -50,14 +50,7 @@
         <script type="text/javascript">
             (function(){
                 emailjs.init("CMwJqODC4A3buaDuM");
-                emailjs.send('service_rm8rf4s', 'template_qzvwuoi', {name: 'Shantelle', notes: 'Please help with the following...'})
-                    .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    }, function(error) {
-                    console.log('FAILED...', error);
-                    });
             })();
-            
         </script>    
     </header>
     <!-- container-fluid - ensure that it responds the way that we want it to, or expect it to, on various devices -->
@@ -67,7 +60,8 @@
                 <h3 class="contact-heading uppercase text-center">Got a project in mind?</h3>
                 <h5 class="uppercase text-center">Let work together!</h5>
                 <div class="center-form">
-                    <form>
+                    <!-- When a form has been submitted, we want to invoke a function that will send the email. -->
+                    <form onsubmit="return sendMail(this);">
                         <!-- The class of form-control is required.
                         This is a Bootstrap class, which adds styling to this form. -->
                         <input type="text" name="name" id="fullname" class="form-control" placeholder="Name" required />
@@ -157,5 +151,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>   
+    <script src="/assets/js/sendemail.js"></script>
 </body>
 </html>
