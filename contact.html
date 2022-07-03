@@ -44,12 +44,20 @@
                 </div>
             </div>
         </div>
+        <!-- EmailJS -->
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
         </script>
         <script type="text/javascript">
             (function(){
                 emailjs.init("CMwJqODC4A3buaDuM");
+                emailjs.send('service_rm8rf4s', 'template_qzvwuoi', {name: 'Shantelle', notes: 'Please help with the following...'})
+                    .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    }, function(error) {
+                    console.log('FAILED...', error);
+                    });
             })();
+            
         </script>    
     </header>
     <!-- container-fluid - ensure that it responds the way that we want it to, or expect it to, on various devices -->
